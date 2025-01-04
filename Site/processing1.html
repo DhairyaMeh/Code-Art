@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+
+     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="refresh" content="8; url=./Visual Builder/SignUp.html"
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Hind&amp;display=swap'>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/ca.png">
+    <style>
+        * {
+            border: 0;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --hue: 223;
+            --bg: hsl(var(--hue), 10%, 90%);
+            --fg: hsl(var(--hue), 10%, 10%);
+            --primary: hsl(var(--hue), 90%, 55%);
+            --disabled: hsl(var(--hue), 10%, 75%);
+            font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
+        }
+
+        body,
+        button {
+            font: 1em/1.5 Hind, sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+
+        button {
+            background-image: linear-gradient(90deg, #fb4e57 0%, #f92b74 100%);
+            color: #fff;
+            cursor: pointer;
+            margin: auto;
+            padding: 0.5em 1em;
+            position: relative;
+            left: 22%;
+            transform: translateX(-50%);
+            text-align: center;
+            transition: background 0.15s linear;
+        }
+        #reset1{
+            background-image: linear-gradient(90deg, #004fd2 10%, #a511dc 100%);
+            color: #fff;
+            cursor: pointer;
+            margin: auto;
+            padding: 0.5em 1em;
+            position: relative;
+            left: 32%;
+            transform: translateX(-50%);
+            text-align: center;
+            transition: background 0.15s linear;
+
+        }
+        button:hover {
+            background: hsl(var(--hue), 90%, 45%);
+        }
+
+        .sp {
+            --incTrans: 0.1;
+  
+            /* in seconds */
+            display: block;
+            margin-bottom: 1.5em;
+            overflow: visible;
+            width: 12.75em;
+            height: 1.5em;
+        }
+
+        .sp__bar,
+        .sp__hub {
+            stroke: var(--disabled);
+        }
+
+        .sp__hub--done,
+        .sp__dot--done {
+            transition: r 0.2s cubic-bezier(0, 0, 0.33, 1.67);
+        }
+
+        .sp__hub--done {
+            r: 10px;
+        }
+
+        .sp__hub--done~.sp__bar-fill {
+            transition: all calc(1s * var(--incTrans)) linear;
+        }
+
+        .sp__bar-fill,
+        .sp__hub-fill {
+            stroke: var(--primary);
+        }
+
+        .sp__bar-fill {
+            stroke-dasharray: 40 40;
+            stroke-dashoffset: 40;
+        }
+
+        .sp__hub-fill {
+            stroke-dasharray: 0 62.8 0;
+            visibility: hidden;
+        }
+
+        .sp__hub-fill--done {
+            stroke-dasharray: 31.4 0 31.4;
+            transition: all 0.2s 0.2s ease-out;
+            visibility: visible;
+        }
+
+        .sp__dot {
+            fill: var(--primary);
+        }
+
+        .sp__dot--done {
+            r: 4px;
+            transition-delay: 0.4s;
+        }
+
+        .status {
+            margin-bottom: 4.5em;
+            text-align: center;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: hsl(var(--hue), 10%, 10%);
+                --fg: hsl(var(--hue), 10%, 90%);
+                --primary: hsl(var(--hue), 90%, 65%);
+                --disabled: hsl(var(--hue), 10%, 30%);
+            }
+        }
+    </style>
+
+    <script>
+        window.console = window.console || function(t) {};
+    </script>
+
+
+
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+
+
+</head>
+
+<body translate="no">
+    <main>
+        <svg class="sp" width="204px" height="24px" viewBox="0 0 204 24" xmlns="http://www.w3.org/2000/svg">
+		<!-- Part 1 -->
+		<circle data-dot="1" class="sp__dot" cx="12" cy="12" r="0" fill="#000"/>
+		<line class="sp__bar" x1="22" y1="12" x2="62" y2="12" fill="none" stroke="#000" stroke-width="4" />
+		<circle data-hub="1" class="sp__hub" cx="12" cy="12" r="2" fill="none" stroke="#000" stroke-width="4" />
+		<line data-bar="1" class="sp__bar-fill" x1="22" y1="12" x2="62" y2="12" fill="none" stroke="#000" stroke-width="4" />
+		<circle data-hub-fill="1" class="sp__hub-fill" cx="12" cy="12" r="10" fill="none" stroke-width="4" transform="rotate(180,12,12)" />
+		<!-- Part 2 -->
+		<circle data-dot="2" class="sp__dot" cx="72" cy="12" r="0" fill="#000"/>
+		<line class="sp__bar" x1="82" y1="12" x2="122" y2="12" fill="none" stroke="#000" stroke-width="4" />
+		<circle data-hub="2" class="sp__hub" cx="72" cy="12" r="2" fill="none" stroke="#000" stroke-width="4" />
+		<line data-bar="2" class="sp__bar-fill" x1="82" y1="12" x2="122" y2="12" fill="none" stroke="#000" stroke-width="4" />
+		<circle data-hub-fill="2" class="sp__hub-fill" cx="72" cy="12" r="10" fill="none" stroke-width="4" transform="rotate(180,72,12)" />
+		<!-- Part 3 -->
+		<circle data-dot="3" class="sp__dot" cx="132" cy="12" r="0" fill="#000"/>
+		<line class="sp__bar" x1="142" y1="12" x2="182" y2="12" fill="none" stroke="#000" stroke-width="4" />
+		<circle data-hub="3" class="sp__hub" cx="132" cy="12" r="2" fill="none" stroke="#000" stroke-width="4" />
+		<line data-bar="3" class="sp__bar-fill" x1="142" y1="12" x2="182" y2="12" fill="none" stroke="#000" stroke-width="4" />
+		<circle data-hub-fill="3" class="sp__hub-fill" cx="132" cy="12" r="10" fill="none" stroke-width="4" transform="rotate(180,132,12)" />
+		<!-- Part 4 -->
+		<circle data-dot="4" class="sp__dot" cx="192" cy="12" r="0" fill="#000"/>
+		<circle data-hub="4" class="sp__hub" cx="192" cy="12" r="2" fill="none" stroke="#000" stroke-width="4" />
+		<circle data-hub-fill="4" class="sp__hub-fill" cx="192" cy="12" r="10" fill="none" stroke-width="4" transform="rotate(180,192,12)" />
+	</svg>
+        <p class="status"></p>
+     <!-- <a href="./Visual Builder/editor.html"><button id="reset1" type="button">Proceed to Builder </button></a>
+     <a href="./s1.html" download="s1.html"><button id="reset" type="button">Get code</button></a> -->
+
+    </main>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+
+ <script>
+   
+ </script>
+    <script id="rendered-js">
+        document.addEventListener("DOMContentLoaded", () => {
+            const spb = new SegmentedProgress(".sp", ".status");
+        });
+
+        class SegmentedProgress {
+            constructor(svgQS, statusQS) {
+                this.svgEl = document.querySelector(svgQS);
+                this.statusEl = document.querySelector(statusQS);
+                this.pct = 0;
+                this.part = 0;
+                this.parts = 4;
+                this.timeout = null;
+
+                this.init();
+
+                let resetBtn = document.getElementById("reset");
+                
+            }
+            init() {
+                this.updateStatus("Waiting…");
+                this.timeout = setTimeout(this.nextPart.bind(this), 750);
+            }
+            reset() {
+                this.pct = 0;
+                this.part = 0;
+                // undo all colored strokes
+                for (let p = 1; p <= this.parts; ++p) {
+                    if (window.CP.shouldStopExecution(0)) break;
+                    this.fillBar(p, this.pct);
+                    this.fillCircle(p, true);
+                }
+                window.CP.exitedLoop(0);
+
+                clearTimeout(this.timeout);
+                this.init();
+            }
+            run() {
+                if (this.part < this.parts) {
+                    // increment
+                    if (this.pct < 100) {
+                        this.inc(10);
+                        let svgCS = window.getComputedStyle(this.svgEl),
+                            incTrans = svgCS.getPropertyValue("--incTrans") * 1e3 || 0;
+                        this.timeout = setTimeout(this.run.bind(this), incTrans);
+
+                    } else {
+                        this.nextPart();
+                    }
+                }
+            }
+            inc(amt) {
+                this.pct += amt;
+
+                if (this.pct >= 100)
+                    this.pct = 100;
+
+                this.fillBar(this.part, this.pct);
+            }
+            fillBar(part, pct) {
+                if (this.svgEl) {
+                    let bar = this.svgEl.querySelector(`[data-bar='${part}']`);
+                    if (bar) {
+                        let offset = 40 * (1 - this.pct / 100);
+                        bar.style.strokeDashoffset = offset;
+                    }
+                }
+            }
+            fillCircle(part, unfill = false) {
+                let dot = this.svgEl.querySelector(`[data-dot='${part}']`),
+                    hub = this.svgEl.querySelector(`[data-hub='${part}']`),
+                    hubFill = this.svgEl.querySelector(`[data-hub-fill='${part}']`);
+
+                if (unfill === true) {
+                    if (dot)
+                        dot.classList.remove("sp__dot--done");
+                    if (hub)
+                        hub.classList.remove("sp__hub--done");
+                    if (hubFill)
+                        hubFill.classList.remove("sp__hub-fill--done");
+                } else {
+                    if (dot)
+                        dot.classList.add("sp__dot--done");
+                    if (hub)
+                        hub.classList.add("sp__hub--done");
+                    if (hubFill)
+                        hubFill.classList.add("sp__hub-fill--done");
+                }
+            }
+            nextPart() {
+                this.pct = 0;
+                // next part’s circle
+                ++this.part;
+                this.fillCircle(this.part);
+                // display the message
+                let msg = "";
+                if (this.part < this.parts)
+                    msg = `Scanning the elements ${this.part}/${this.parts - 1}…`;
+                else
+
+                    msg = "Code is Generated!";
+
+                this.updateStatus(msg);
+                // delay for next bar
+                let hubTotalTrans = 600;
+                this.timeout = setTimeout(this.run.bind(this), hubTotalTrans);
+            }
+            updateStatus(msg) {
+                if (this.statusEl)
+                    this.statusEl.textContent = msg;
+            }
+        }
+        //# sourceURL=pen.js
+    </script>
+
+
+
+</body>
+
+</html>
